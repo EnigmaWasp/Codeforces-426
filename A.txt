@@ -1,0 +1,55 @@
+
+import java.util.*;
+import java.io.*;
+
+public class J {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        char s1 = in.next().charAt(0);
+        char s2 = in.next().charAt(0);
+        int n = in.nextInt();
+        n %= 4;
+        char c1 = s1;
+        char c2 = s1;
+        for (int i = 0; i < n; i++) {
+            c1 = nextSpin(c1);
+            c2 = prevSpin(c2);
+        }
+        if (c1 == s2 && c2 == s2) {
+            System.out.println("undefined");
+        } else if (c1 == s2) {
+            System.out.println("cw");
+        } else if (c2 == s2) {
+            System.out.println("ccw");
+        } else {
+            System.out.println("undefined");
+        }
+    }
+
+    public static char nextSpin(char c) {
+        if (c == '<') {
+            return '^';
+        }
+        if (c == '^') {
+            return '>';
+        }
+        if (c == '>') {
+            return 'v';
+        }
+        return '<';
+    }
+
+    public static char prevSpin(char c) {
+        if (c == '<') {
+            return 'v';
+        }
+        if (c == 'v') {
+            return '>';
+        }
+        if (c == '>') {
+            return '^';
+        }
+        return '<';
+    }
+}
